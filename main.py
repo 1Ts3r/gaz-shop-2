@@ -5,10 +5,6 @@ import os
 from telebot import types
 from flask import Flask, request
 
-# Считываю свой токен из файла mytoken.txt, в твоем случае это будет не нужно
-# Удали 6 и 7 строчки и вместо переменной mytoken в 10 строчке напиши свой токен
-# Пример: bot = telebot.TeleBot('62732:RyJidSDIdi...')
-# Передаем сюда токен, который получили от FatherBot
 TOKEN = '5814137876:AAFakytbuSZ0NU8XBxgcrRublNqEJDbH2JI'
 bot = telebot.TeleBot(TOKEN)
 # Варианты ответов пользователю, если тот ввел непонятное боту сообщение
@@ -16,6 +12,7 @@ answers = ['Я не розумію вас', 'Напишіть щось інше'
 
 # Обработка команды /start
 app = Flask(__name__)
+
 @app.route(f'/{TOKEN}', methods=['POST'])
 def webhook():
     update = telebot.types.Update.de_json(request.stream.read().decode('utf-8'))
